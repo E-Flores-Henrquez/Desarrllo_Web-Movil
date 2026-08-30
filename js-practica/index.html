@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function agregarProducto(){
+                let cmb = document.getElementById("cmbProducto");
+                let id = document.getElementById("txtId").value;
+                let nombre = document.getElementById("txtNombre").value;
+                let categoriaTexto = document.getElementById("txtCategoria").value;
+
+                let datosProducto = { id: id, nombre: nombre };
+
+                let categoria = { categoria: categoriaTexto };
+
+                let producto = { datosProducto, categoria };
+
+                let opt = document.createElement("option");
+                opt.setAttribute("value", producto.datosProducto.id);
+                opt.innerText = `${producto.datosProducto.nombre} (${producto.categoria.categoria})`;
+                cmb.appendChild(opt);
+            }
+        </script>
+    </head>
+    <body>
+        <h3>Agregar producto manualmente (composición de objetos + DOM)</h3>
+        <input id="txtId" type="text" placeholder="ID" /><br>
+        <input id="txtNombre" type="text" placeholder="Nombre" /><br>
+        <input id="txtCategoria" type="text" placeholder="Categoría" /><br>
+        <button type="button" onclick="agregarProducto();">Agregar</button><br>
+        <div>
+            <select id="cmbProducto" name="cmbProducto"></select>
+        </div>
+    </body>
+</html>
